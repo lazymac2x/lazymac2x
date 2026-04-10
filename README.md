@@ -1,16 +1,63 @@
-## Hi there 👋
+# lazymac2x
 
-<!--
-**lazymac2x/lazymac2x** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+> Building **lazymac** in public — 40+ developer APIs on Cloudflare Workers, two unified MCP servers, and an API marketplace strategy. From $0 MRR upward.
 
-Here are some ideas to get you started:
+## 🚀 Ship list (last 2 weeks)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+| Asset | What | Link |
+|-------|------|------|
+| **api.lazy-mac.com** | 40+ REST APIs on CF Workers, sub-200ms p95, free tier | [hub →](https://api.lazy-mac.com) |
+| **@lazymac/mcp** | Unified MCP server — 42 tools (qr, ip-geo, ai-cost, llm-router, k-privacy…) | [npm](https://www.npmjs.com/package/@lazymac/mcp) · [smithery](https://smithery.ai/server/lazymac/mcp) |
+| **@lazymac/k-mcp** | Korean wedge MCP — PIPA, KRW, BRN, address, NLP | [npm](https://www.npmjs.com/package/@lazymac/k-mcp) · [smithery](https://smithery.ai/server/lazymac/k-mcp) |
+| **lazymac-api-healthcheck-action** | Free GitHub Action — ping any URL on a cron | [marketplace candidate](https://github.com/lazymac2x/lazymac-api-healthcheck-action) |
+| **lazymac API Hub Pro** | $29/mo membership — unlimited API calls | [Gumroad](https://coindany.gumroad.com/l/zlewvz) |
+
+## 🛠 Install the MCP
+
+```json
+{
+  "mcpServers": {
+    "lazymac": {
+      "command": "npx",
+      "args": ["-y", "@lazymac/mcp"]
+    }
+  }
+}
+```
+
+Drops 42 tools into Claude Code, Cursor, Windsurf in one block. Free 100 req/day per IP.
+
+## 🇰🇷 Korean wedge
+
+K-MCP exists because most Korean public-data APIs return XML, require Korean-only docs, and don't ship MCP. K-MCP normalizes everything to English JSON for global SaaS shipping into Korea.
+
+```bash
+npx -y @lazymac/k-mcp
+```
+
+Tools: PIPA scan, KRW + BOK rates, 사업자등록번호 lookup, address geocode, morpheme/sentiment NLP, public data (weather, holidays, transport).
+
+## 📊 Status
+
+- CF Workers: **40 LIVE**
+- npm packages: **2 LIVE**
+- Smithery servers: **2 LIVE**
+- RapidAPI: **20 public / 6 private** (RapidAPI 20-public/owner cap)
+- Apify: **22 public actors**
+- Dev.to: **24+ articles**, daily pipeline
+- MRR: **$0 → working on it** 🌱
+
+## 🧭 What I'm trying to figure out
+
+- Distribution > product. I built breadth before depth and learned the boring way.
+- One hero MCP > 36 spread. The new strategy bets on the unified server.
+- Korean wedge as the global differentiator.
+
+## 💬 Find me
+
+- Hub: [api.lazy-mac.com](https://api.lazy-mac.com)
+- Pricing: [api.lazy-mac.com/pricing](https://api.lazy-mac.com/pricing)
+- Sponsor: [github.com/sponsors/lazymac2x](https://github.com/sponsors/lazymac2x) (pending review)
+- Dev.to: [@lazymac2x](https://dev.to/lazymac2x)
+
+> Building publicly. Open to bug reports, PRs, mean comments, and the first paying customer.
