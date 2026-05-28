@@ -1,91 +1,83 @@
 # lazymac2x
 
-> Building **lazymac** in public — 40+ developer APIs on Cloudflare Workers, two unified MCP servers, Korean data tools, and an Apify scraper suite. From $0 MRR upward.
+**Building production-grade AI tools at the API + MCP layer — pay-once, lifetime, MIT.**
 
-## 🚀 Ship list
+[![Gumroad](https://img.shields.io/badge/Gumroad-coindany-pink)](https://coindany.gumroad.com) [![dev.to](https://img.shields.io/badge/dev.to-lazymac2x-black)](https://dev.to/lazymac2x) [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)](https://api.lazy-mac.com) [![MCP](https://img.shields.io/badge/MCP-server-blue)](https://modelcontextprotocol.io)
 
-| Asset | What | Link |
-|-------|------|------|
-| **api.lazy-mac.com** | 40+ REST APIs on CF Workers, sub-200ms p95, free tier | [hub →](https://api.lazy-mac.com) |
-| **@lazymac/mcp** | Unified MCP server — 42 tools (qr, ip-geo, ai-cost, llm-router, k-privacy…) | [npm](https://www.npmjs.com/package/@lazymac/mcp) · [smithery](https://smithery.ai/server/lazymac/mcp) |
-| **@lazymac/k-mcp** | Korean wedge MCP — PIPA, KRW, BRN, address, NLP | [npm](https://www.npmjs.com/package/@lazymac/k-mcp) · [smithery](https://smithery.ai/server/lazymac/k-mcp) |
-| **Korean Company Scraper** | English JSON firmographics from KRX + DART — no Korean required | [Apify →](https://apify.com/lazymac/korean-company-scraper) |
-| **lazymac-api-healthcheck-action** | Free GitHub Action — ping any URL on a cron | [marketplace →](https://github.com/lazymac2x/lazymac-api-healthcheck-action) |
-| **lazymac API Hub Pro** | $9/mo — unlimited API calls across all endpoints | [Gumroad](https://coindany.gumroad.com/l/zlewvz) |
+I ship developer tools as Cloudflare Workers + MCP servers — drop-in for Claude Desktop, Cursor, Continue, and any MCP-compatible agent. **100+ public repos**, **200+ API endpoints**, **8 paid products** on Gumroad. One license, lifetime updates, MIT source.
 
-## 🛠 Install the MCP
+---
 
-```json
-{
-  "mcpServers": {
-    "lazymac": {
-      "command": "npx",
-      "args": ["-y", "@lazymac/mcp"]
-    }
-  }
-}
-```
+## 🚀 Top Products
 
-Drops 42 tools into Claude Code, Cursor, Windsurf in one block. Free 100 req/day per IP.
+| Product | Type | Price | One-liner |
+|---|---|---|---|
+| [AI Citation Coverage MCP — Pro](https://coindany.gumroad.com/l/ai-citation-coverage-mcp-pro) | MCP | $19 | Claim-level RAG citation scoring — catch hallucinations pre-emit |
+| [Prompt Anti-Pattern Detector — Pro](https://coindany.gumroad.com/l/prompt-anti-pattern) | MCP | $19 | 24+ prompt bloat / collision / injection-surface rules |
+| [LLM Response Determinism Checker — Pro](https://coindany.gumroad.com/l/llm-response-determ) | MCP | $29 | Same prompt N times → drift score across 6 providers |
+| [Prompt-Leak Detector API](https://coindany.gumroad.com/l/prompt-leak-detector) | REST + MCP | $25 | 30+ leak signatures — stop echoing your system prompt |
+| [AI Output Watermark Detector](https://coindany.gumroad.com/l/ai-output-watermark) | REST + MCP | $19 | Statistical AI-text detection across OpenAI / Anthropic / Llama |
+| [AI Output Schema Validator MCP](https://coindany.gumroad.com/l/ai-output-schema-va) | MCP | $5 → $19 | Catch malformed LLM JSON + auto-repair without re-prompt |
+| [LLM Token Budget Forecaster](https://coindany.gumroad.com/l/llm-token-budget-fo) | MCP | $5 → $19 | Project month-end LLM bill before invoice arrives |
+| [Finops Minibar](https://chromewebstore.google.com/detail/finops-minibar) | Chrome ext | $5 → $19 | Real-time spend across 7 AI providers in one toolbar |
 
-## 🇰🇷 Korean wedge
+Every license is **one-time, lifetime updates, MIT-licensed open source**.
 
-Korean public data is the moat. Most Korean APIs return XML, require Korean-only docs, and don't ship MCP or REST. I normalize everything to English JSON for global teams expanding into Korea.
+---
 
-**K-MCP** — drop into any MCP client:
+## 🧰 100+ Free MCP + API Servers
+
+**Live at**: https://api.lazy-mac.com — 200+ endpoints, free tier, no signup.
+
+### Categories
+- **AI Cost / Finops** — `ai-cost-optimizer`, `llm-cost-optimizer`, `token-budget-allocator`, `prompt-cache-maximizer`, `ai-spend-tracker`, `stream-cost-meter`
+- **Prompt Engineering** — `prompt-anti-pattern-detector`, `prompt-leak-detector`, `prompt-injection-firewall`, `prompt-determinism-scorer`, `prompt-diet`
+- **Security** — `mcpwatch` (OWASP MCP Top 10 scanner), `code-pattern-risk-scanner`, `vuln-scanner-worker`, `graphql-dos-shield`
+- **API Tooling** — `api-cost-auditor`, `api-flow-analyzer`, `api-payload-auditor`, `api-changelog-tracker`, `webhook-reliability-suite`
+- **Korea-specific** — `k-privacy-scanner`, `k-address-geocoder`, `korean-business-validator`, `korean-content-seo`, `govdata-korea`
+- **Agent / Memory** — `agent-memory`, `agent-trace-auditor`, `agent-action-risk`, `agent-loop-detector`, `agent-workflow-engine`
+
+Every server: REST + MCP (JSON-RPC 2.0), Cloudflare Workers, zero cold start, free tier.
+
+---
+
+## 🔧 Install Any MCP Server (One Line)
+
 ```bash
-npx -y @lazymac/k-mcp
-```
-Tools: PIPA compliance scan, KRW + BOK rates, BRN (사업자등록번호) lookup, address geocode, morpheme/sentiment NLP, public data (weather, holidays, transport).
-
-**Korean Company Scraper** — pull KRX + DART firmographics at $0.10/company:
-```python
-from apify_client import ApifyClient
-client = ApifyClient("YOUR_TOKEN")
-run = client.actor("lazymac/korean-company-scraper").call(run_input={
-    "companyNames": ["Samsung Electronics", "Kakao", "NAVER"],
-    "includeFinancials": True
-})
+npx mcpize add lazymac/<server-name>
 ```
 
-No Korean language required. Returns `name_en`, `stock_code`, `industry`, `established`, `dart_corp_code`.
+Then add to `claude_desktop_config.json` (Claude Desktop), `~/.cursor/mcp.json` (Cursor), or wherever your MCP client expects.
 
-## 📊 Status
+---
 
-- CF Workers: **40 LIVE**
-- npm packages: **2 LIVE** (@lazymac/mcp · @lazymac/k-mcp)
-- Smithery servers: **2 LIVE**
-- RapidAPI: **20 public**
-- Apify actors: **23 public** (incl. Korean Company Scraper)
-- Dev.to: **24+ articles**, daily pipeline
-- MRR: **$0 → first revenue push active** 🌱
+## 🛡️ MCPWatch — Security Scanner for MCP Servers
 
-## 🧭 Strategy
+[**lazymac2x/mcpwatch**](https://github.com/lazymac2x/mcpwatch) — "Have I Been Pwned for MCP servers".
 
-- **Korean data as a global wedge** — nobody else ships Korean gov/exchange data as clean English JSON APIs + MCP
-- **Distribution > product** — Apify PPE + GitHub Sponsors + Gumroad running in parallel
-- **24/7 autonomous** — Mac Mini runs all bots, pipelines, and content generation while I sleep
+Runs the **10 OWASP MCP Top 10** checks against any public MCP server. CLI, GitHub Action, public leaderboard, hosted scanner. MIT. Pro Report $49 (in development).
 
-## 💖 Sponsor
+```bash
+npx mcpwatch-scanner /path/to/your/mcp
+```
 
-**[github.com/sponsors/lazymac2x](https://github.com/sponsors/lazymac2x)** ← GitHub Sponsors is live
+---
 
-Everything I build ships with a free tier. Sponsoring keeps free tier alive and gets you API access.
+## 📈 Stack
 
-| Tier | Price | What you get |
-|------|-------|-------------|
-| **Supporter** | $5/mo | Gratitude + early access to new tools |
-| **Developer** | $15/mo | Pro API key — 1,000 req/day across all 40+ endpoints |
-| **Builder** | $29/mo | Unlimited API calls + priority support + Korean data tools |
+**Edge**: Cloudflare Workers + Hono + D1 + R2 + Workers AI + Vectorize + Workers Analytics Engine
+**Models**: Anthropic Claude Sonnet 4.6 / Opus 4.7, OpenAI, Groq, Together, Bedrock, Cloudflare Workers AI
+**Distribution**: npm, mcp.so, smithery, modelcontextprotocol/registry, Gumroad, Polar
+**Open source license**: MIT across all repos
 
-One-time sponsorship works too. Even $1 tells me someone finds this useful.
+---
 
-## 💬 Find me
+## 📬 Contact
 
-- Hub: [api.lazy-mac.com](https://api.lazy-mac.com)
-- Pricing: [api.lazy-mac.com/pricing](https://api.lazy-mac.com/pricing)
-- Sponsor: [github.com/sponsors/lazymac2x](https://github.com/sponsors/lazymac2x)
-- Apify: [apify.com/lazymac](https://apify.com/lazymac)
-- Dev.to: [@lazymac2x](https://dev.to/lazymac2x)
+- **Sales / support**: [coindany.gumroad.com](https://coindany.gumroad.com)
+- **Issues + roadmap**: open one on any repo, response within 24h
+- **dev.to writing**: [dev.to/lazymac2x](https://dev.to/lazymac2x)
 
-> Building publicly. Open to bug reports, PRs, mean comments, and the first paying customer.
+---
+
+**One-time licenses. Lifetime updates. Open source. Ship faster.**
